@@ -54,7 +54,7 @@ function Card() {
 
           <div className='font-semibold'>{job.position}</div>
 
-          <div className='flex text-gray-500 gap-2 py-3'>
+          <div className='flex text-gray-500 gap-2 pt-3 pb-4 border-b divide-opacity-60'>
             <p className='text-gray-500'> {job.postedAt}</p>
             <span>&#8226;</span>
             <p className='text-gray-500'> {job.contract}</p>
@@ -63,7 +63,7 @@ function Card() {
           </div>
         </div>
 
-        <div className='cursor-pointer flex flex-wrap direction-row gap-4 items-center font-semibold text-darkCyan'>
+        <div className='cursor-pointer flex flex-wrap direction-row gap-4 pt-5 items-center font-semibold text-darkCyan'>
           <span
             onClick={lenguagesHandler}
             className='cursor-pointer bg-filterTbl py-1 px-3  rounded '
