@@ -14,7 +14,7 @@ interface JobData {
   contract: string;
   location: string;
   languages: Array<string>;
-  tools?: Array<string>; // Use optional property instead of union with undefined
+  tools?: Array<string>;
 }
 
 function Card() {
@@ -32,34 +32,47 @@ function Card() {
         } `}
       >
         <img src={job.logo} alt='{job.company}' className='w-16 origin-top' />
-        <div className=''>
+
+        <div className=' '>
           <div className='flex gap-4 '>
             <h1 className='inline text-darkCyan font-bold'>{job.company}</h1>
-            <span className='bg-darkCyan text-white rounded-full px-3 py-0.5 font-bold uppercase '>
-              {job.new ? <span>New!</span> : null}
+            <span>
+              {job.new ? (
+                <span className='bg-darkCyan text-white rounded-full px-3 py-0.5 font-bold uppercase '>
+                  New!
+                </span>
+              ) : null}
             </span>
-            <span className='bg-veryDark text-white rounded-full px-3 py-0.5 font-bold uppercase'>
-              {job.featured ? <span>Featured</span> : null}
+            <span>
+              {job.featured ? (
+                <span className='bg-veryDark text-white rounded-full px-3 py-0.5 font-bold uppercase'>
+                  Featured
+                </span>
+              ) : null}
             </span>
           </div>
-          {job.position}
-          <div className='flex gap-4'>
-            <span>{job.postedAt}</span>
-            <span>{job.contract}</span>
-            <span>{job.location}</span>
+
+          <div className='font-semibold'>{job.position}</div>
+
+          <div className='flex text-gray-500 gap-2 py-3'>
+            <p className='text-gray-500'> {job.postedAt}</p>
+            <span>&#8226;</span>
+            <p className='text-gray-500'> {job.contract}</p>
+            <span> &#8226;</span>
+            <p className='text-gray-500'>{job.location}</p>
           </div>
         </div>
 
-        <div className='cursor-pointer flex flex-wrap direction-row gap-4 items-center'>
+        <div className='cursor-pointer flex flex-wrap direction-row gap-4 items-center font-semibold text-darkCyan'>
           <span
             onClick={lenguagesHandler}
-            className='cursor-pointer bg-gray-200 py-1 px-3  rounded'
+            className='cursor-pointer bg-filterTbl py-1 px-3  rounded '
           >
             {job.role}
           </span>
           <span
             onClick={lenguagesHandler}
-            className='cursor-pointer bg-gray-200 py-1 px-3 rounded'
+            className='cursor-pointer bg-filterTbl py-1 px-3 rounded'
           >
             {job.level}
           </span>
@@ -68,7 +81,7 @@ function Card() {
             <li
               key={language}
               onClick={lenguagesHandler}
-              className='bg-gray-200 p-1 rounded py-1 px-3 '
+              className='bg-filterTbl p-1  rounded py-1 px-2 '
             >
               {language}
             </li>
@@ -79,7 +92,7 @@ function Card() {
               <span
                 key={tool}
                 onClick={lenguagesHandler}
-                className='bg-gray-200 p-1 rounded py-1 px-3 '
+                className='bg-filterTbl p-1 rounded py-1 px-3 '
               >
                 {tool}
               </span>
