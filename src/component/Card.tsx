@@ -27,23 +27,26 @@ function Card() {
     return jobs.map((job) => (
       <div
         key={job.id}
-        className={`flex flex-col  bg-white p-4 hover:scale-105 transition-all rounded-lg shadow-xl  ${
+        className={`flex flex-col md:flex-row md:justify-between bg-white p-4 hover:scale-105 transition-all rounded-lg shadow-xl  ${
           job.featured ? 'border-darkCyan border-l-4  ' : 'border-gray-200'
         } `}
       >
-        <img src={job.logo} alt='{job.company}' className='w-16 origin-top' />
-
-        <div className=' '>
-          <div className='flex gap-4 '>
-            <h1 className='inline text-darkCyan font-bold'>{job.company}</h1>
-            <span>
+        <div className='md:grid md:auto-cols-auto md:gap-x-4  md:auto-rows-auto md:items-center '>
+          <img
+            src={job.logo}
+            alt={job.company}
+            className='w-20 h-20 row-span-3  justify-self-center'
+          />
+          <div className='flex  gap-4   items-center'>
+            <span className='flex gap-4 '>
+              <span className='inline  text-darkCyan font-bold'>
+                {job.company}
+              </span>
               {job.new ? (
                 <span className='bg-darkCyan text-white rounded-full px-3 py-0.5 font-bold uppercase '>
                   New!
                 </span>
               ) : null}
-            </span>
-            <span>
               {job.featured ? (
                 <span className='bg-veryDark text-white rounded-full px-3 py-0.5 font-bold uppercase'>
                   Featured
@@ -51,10 +54,9 @@ function Card() {
               ) : null}
             </span>
           </div>
+          <div className='font-semibold md:col-start-2  '>{job.position}</div>
 
-          <div className='font-semibold'>{job.position}</div>
-
-          <div className='flex text-gray-500 gap-2 pt-3 pb-4 border-b divide-opacity-60'>
+          <div className='flex text-gray-500 md:col-start-2  gap-2 pt-3 pb-4 md:pt-0 md:pb-4 border-b md:border-0'>
             <p className='text-gray-500'> {job.postedAt}</p>
             <span>&#8226;</span>
             <p className='text-gray-500'> {job.contract}</p>
@@ -104,11 +106,11 @@ function Card() {
   return (
     <>
       <img
-        src='../images/bg-header-desktop.svg'
+        src='../public/bg-header-desktop.svg'
         alt=''
         className='w-full bg-darkCyan'
       />
-      <div className=' bg-zinc-300  bg-bgC py-4 '>
+      <div className=' bg-zinc-300  bg-bgC py-16 '>
         <div className=' bg-zinc-300 max-w-screen-xl mx-auto px-4 space-y-8'>
           {renderJobs()}
         </div>
